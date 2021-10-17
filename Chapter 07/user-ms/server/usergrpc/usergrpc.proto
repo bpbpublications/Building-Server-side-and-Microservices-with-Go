@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package usergrpc;
+
+option go_package = ".;usergrpc";
+
+// Interface exported by the server
+service UserGrpc {
+    // Authorize user
+    rpc AuthorizeUser(AuthorizeUserRequest) returns (AuthorizeUserResponse) {}
+
+    // Get user ID
+    rpc GetUserID(GetUserIDRequest) returns (GetUserIDResponse) {}
+
+    // Get user's full name
+    rpc GetUserFullName(GetUserFullNameRequest) returns (GetUserFullNameResponse) {}
+}
+
+// AuthorizeUserRequest contains data required for authorize user request
+message AuthorizeUserRequest {
+    string AuthorizationToken = 1; 
+}
+
+// AuthorizeUserResponse contains data required for authorize user response
+message AuthorizeUserResponse {
+    int64 UserRole = 1;
+}
+
+// GetUserIDRequest contains data required for get user ID request
+message GetUserIDRequest {
+    string AuthorizationToken = 1; 
+}
+
+// GetUserIDResponse contains data required for get user ID response
+message GetUserIDResponse {
+    string UserID = 1;
+}
+
+// GetUserFullNameRequest contains data required for get user full name request
+message GetUserFullNameRequest {
+    string UserID = 1; 
+}
+
+// GetUserFullNameResponse contains data required for get user full name response
+message GetUserFullNameResponse {
+    string FullName = 1;
+}

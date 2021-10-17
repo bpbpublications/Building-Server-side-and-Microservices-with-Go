@@ -1,0 +1,34 @@
+###############################################################################
+# Database configuration
+
+# Connection string is in Go pq driver format:
+# host=<host> port=<port> user=<databaseUser> password=<databaseUserPassword> dbname=<databaseName>
+
+[database]
+
+connection_string = "host=192.168.0.17 port=5432 user=postgres password=postgres dbname=user_db sslmode=disable"
+max_idle_connections = 5
+max_open_connections = 20
+connection_max_lifetime = "60s"
+
+###############################################################################
+# HTTP server configuration
+
+[http]
+
+server_address = ":8080"
+
+read_timeout = "60s"
+write_timeout = "60s"
+
+###############################################################################
+# gRPC configuration
+
+# Connection string is in Go gRPC driver format:
+# <host>:<port>
+
+[grpc]
+
+connection_string = ":8081"
+
+###############################################################################

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: report-ms
+spec:
+  selector:
+    matchLabels:
+      app: report-ms
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: report-ms
+    spec:
+      containers:
+        - image: reportservice:1.0.0
+          name: report-ms
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
